@@ -1,0 +1,7 @@
+Execution time: 1.3234 seconds
+Threads used: 4
+
+Thread 0 processed 1976615 words in 1.2651 seconds
+Thread 1 processed 1976615 words in 1.2650 seconds
+Thread 2 processed 1976614 words in 1.2650 seconds
+Thread 3 processed 1976614 words in 1.2650 seconds
