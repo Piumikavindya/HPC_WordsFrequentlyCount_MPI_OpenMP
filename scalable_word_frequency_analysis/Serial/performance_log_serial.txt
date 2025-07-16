@@ -1,2 +1,2 @@
 Execution time: 5.1523 seconds
-Total words processed: 7906458
+
