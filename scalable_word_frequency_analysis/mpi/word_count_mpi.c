@@ -199,13 +199,13 @@ int main(int argc, char *argv[]) {
             insert_word(global_table, all_words + i * MAX_WORD_LEN, all_counts[i]);
         }
 
-        save_results(global_table, "mpi_output_p2.txt");
+        save_results(global_table, "mpi_output_p4.txt");
 
         double end_time = MPI_Wtime();
         double elapsed = end_time - start_time;
         printf("MPI Word Count Completed in %.4f seconds\n", elapsed);
 
-        save_execution_time(elapsed, "mpi_execution_time_p2.txt");
+        save_execution_time(elapsed, "mpi_execution_time_p4.txt");
 
         free(recv_counts);
         free(displs);

@@ -1,5 +1,7 @@
 Accuracy Comparison (RMSE w.r.t Serial Version)
 -----------------------------------------------
-OpenMP   RMSE: 0.000000
-MPI      RMSE: 0.000000
+OpenMP T2   RMSE: 0.000000
+OpenMP T4  RMSE: 0.000000
+MPI P2     RMSE: 0.000000
+MPI P4     RMSE: 0.000000
 Hybrid   RMSE: 0.000000

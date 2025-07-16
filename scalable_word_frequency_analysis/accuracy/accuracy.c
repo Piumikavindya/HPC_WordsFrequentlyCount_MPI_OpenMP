@@ -99,19 +99,25 @@ void free_table(Word **table) {
 
 int main() {
     Word *serial_table[HASH_SIZE] = {0};
-    Word *openmp_table[HASH_SIZE] = {0};
-    Word *mpi_table[HASH_SIZE] = {0};
+    Word *openmp_table_t2[HASH_SIZE] = {0};
+    Word *openmp_table_t4[HASH_SIZE] = {0};
+    Word *mpi_table_p2[HASH_SIZE] = {0};
+    Word *mpi_table_p4[HASH_SIZE] = {0};
     Word *hybrid_table[HASH_SIZE] = {0};
 
     // Load data
     load_counts("../Serial/word_counts_serial.txt", serial_table);
-    load_counts("../openmp/word_counts_Thread4.txt", openmp_table);
-    load_counts("../mpi/mpi_output.txt", mpi_table);
+    load_counts("../openmp/word_counts_Thread2.txt", openmp_table_t2);
+    load_counts("../openmp/word_counts_Thread4.txt", openmp_table_t4);
+    load_counts("../mpi/mpi_output_p2.txt", mpi_table_p2);
+    load_counts("../mpi/mpi_output_p4.txt", mpi_table_p4);
     load_counts("../hybrid/mpi_openmp_output.txt", hybrid_table);
 
-    // Calculate RMSEs
-    double rmse_openmp = calculate_rmse(serial_table, openmp_table);
-    double rmse_mpi = calculate_rmse(serial_table, mpi_table);
+    // Calculate RMSEs    load_counts("../mpi/mpi_output.txt", mpi_table);
+    double rmse_openmp_t2 = calculate_rmse(serial_table, openmp_table_t2);
+    double rmse_openmp_t4 = calculate_rmse(serial_table, openmp_table_t4);
+    double rmse_mpi_p2 = calculate_rmse(serial_table, mpi_table_p2);
+    double rmse_mpi_p4 = calculate_rmse(serial_table, mpi_table_p4);
     double rmse_hybrid = calculate_rmse(serial_table, hybrid_table);
 
     // Save to accuracy.txt
@@ -123,8 +129,10 @@ int main() {
 
     fprintf(fout, "Accuracy Comparison (RMSE w.r.t Serial Version)\n");
     fprintf(fout, "-----------------------------------------------\n");
-    fprintf(fout, "OpenMP   RMSE: %.6f\n", rmse_openmp);
-    fprintf(fout, "MPI      RMSE: %.6f\n", rmse_mpi);
+    fprintf(fout, "OpenMP T2   RMSE: %.6f\n", rmse_openmp_t2);
+    fprintf(fout, "OpenMP T4  RMSE: %.6f\n", rmse_openmp_t4);
+    fprintf(fout, "MPI P2     RMSE: %.6f\n", rmse_mpi_p2);
+    fprintf(fout, "MPI P4     RMSE: %.6f\n", rmse_mpi_p4);
     fprintf(fout, "Hybrid   RMSE: %.6f\n", rmse_hybrid);
     fclose(fout);
 
@@ -132,8 +140,10 @@ int main() {
 
     // Clean up
     free_table(serial_table);
-    free_table(openmp_table);
-    free_table(mpi_table);
+    free_table(openmp_table_t2);
+    free_table(openmp_table_t4);
+    free_table(mpi_table_p2);
+    free_table(mpi_table_p4);
     free_table(hybrid_table);
 
     return 0;
